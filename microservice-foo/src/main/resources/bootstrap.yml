@@ -1,0 +1,20 @@
+#server:
+#  # 指定Tomcat端口
+#  port: @server.port@
+logging:
+  level:
+    root: DEBUG
+spring:
+  application:
+    name: microservice-foo
+#    name: encryption
+  cloud:
+    config:
+      uri: http://localhost:8875/
+#      profile: dev            # profile对应config server所获取的配置文件中的{profile}
+#      label: master           # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

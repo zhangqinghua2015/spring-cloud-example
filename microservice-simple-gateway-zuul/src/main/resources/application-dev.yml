@@ -1,0 +1,36 @@
+server:
+  # 指定Tomcat端口
+  port: @server.port@
+logging:
+  level:
+    root: DEBUG
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://@eureka.server.host@:@eureka.server.port@/eureka/
+zuul:
+  # 使用'*'可忽略所有微服务
+#  ignored-services: '*'
+#  ignored-services: microservice-provider-user,microservice-consumer-movie
+  # 不截取前缀
+#  prefix: xxx
+#  strip-prefix: false
+  # 忽略所有包含/admin/的路径
+#  ignoredPatterns: /**/admin/**
+  # 路由指定微服务
+  routes:
+#    microservice-simple-provider-user: /user/**
+#    microservice-simple-consumer-movie: /movie/**
+    microservice-simple-consumer-movie:
+      strip-prefix: false
+      path: /movies/users/**
+    # 该配置方式中，user-route只是给路由一个名称，可以任意起名。
+    user-route:
+      # 指定的url，需要注意的是，使用这种方式配置的路由不会作为HystrixCommand执行，同时也不能使用Ribbon来负载均衡多个URL。
+#      url: http://localhost:8775/
+      service-id: microservice-simple-provider-user
+      # service-id对应的路径
+      path: /user/**
+
+
+

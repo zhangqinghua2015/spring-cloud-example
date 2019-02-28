@@ -1,0 +1,20 @@
+server:
+  # 指定Tomcat端口
+  port: @server.port@
+spring:
+  jpa:
+    # 让hibernate打印执行的SQL
+    show-sql: true
+logging:
+  level:
+    root: DEBUG
+management:
+  endpoint:
+    health:
+      # 是否展示健康检查详情
+      show-details: always
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://@eureka.server.host@:@eureka.server.port@/eureka/
+

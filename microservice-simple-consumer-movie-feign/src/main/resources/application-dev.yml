@@ -1,0 +1,36 @@
+server:
+  # 指定Tomcat端口
+  port: @server.port@
+spring:
+  jpa:
+    # 让hibernate打印执行的SQL
+    show-sql: true
+logging:
+  level:
+    root: DEBUG
+    com.itmuch.cloud.study.user.feign.UserFeignClient: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["hystrix.stream", "health"]
+#  endpoint:
+#    health:
+#      # 是否展示健康检查详情
+#      show-details: always
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://@eureka.server.host@:@eureka.server.port@/eureka/
+
+feign:
+  client:
+    config:
+      microservice-provider-user:
+        loggerLevel: full
+  hystrix:
+    enabled: true
+
+ribbon:
+  eager-load:
+    enabled: true

@@ -1,0 +1,18 @@
+server:
+  # 指定Tomcat端口
+  port: @server.port@
+logging:
+  level:
+    root: DEBUG
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          clone-on-start: true
+          # Git仓库地址
+          uri: https://git.oschina.net/itmuch/spring-cloud-config-repo.git
+          # Git仓库账号
+          username:
+          # Git仓库密码
+          password:

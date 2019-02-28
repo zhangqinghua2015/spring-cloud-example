@@ -1,0 +1,7 @@
+server:
+  port: @client.port@
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://@eureka.server.host@:@eureka.server.port@/eureka/

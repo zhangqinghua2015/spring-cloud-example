@@ -1,0 +1,16 @@
+server:
+  # 指定Tomcat端口
+  port: @server.port@
+logging:
+  level:
+    root: DEBUG
+spring:
+  profiles:
+    active: @active@
+  application:
+    name: microservice-simple-config-server-local
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: 'classpath:/'

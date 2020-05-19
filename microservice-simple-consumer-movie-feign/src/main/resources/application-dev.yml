@@ -5,10 +5,13 @@ spring:
   jpa:
     # 让hibernate打印执行的SQL
     show-sql: true
+  servlet:
+    multipart:
+      enabled: true
 logging:
   level:
-    root: DEBUG
-    com.itmuch.cloud.study.user.feign.UserFeignClient: debug
+    root: ERROR
+    com.zqh.client.UserFeignClient: ERROR
 management:
   endpoints:
     web:
@@ -29,7 +32,12 @@ feign:
       microservice-provider-user:
         loggerLevel: full
   hystrix:
+    enabled: false
+  okhttp:
     enabled: true
+  httpclient:
+    enabled: false
+
 
 ribbon:
   eager-load:

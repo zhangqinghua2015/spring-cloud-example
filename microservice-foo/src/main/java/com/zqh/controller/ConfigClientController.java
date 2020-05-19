@@ -1,7 +1,10 @@
 package com.zqh.controller;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class ConfigClientController {
 
+    private ApplicationContext context;
+
     @Value("${profile}")
     private String profile;
 
     @GetMapping("/profile")
     public String hello() {
-        return this.profile + this;
+        return this.profile + "======" + this;
     }
 
 //    @Value("${spring.datasource.password}")
